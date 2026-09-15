@@ -6,7 +6,26 @@ REPO="Geyvra/GevyraCLI"
 INSTALL_DIR="/usr/local/bin"
 BINARY_NAME="gevyra"
 
-echo "Installing Gevyra CLI..."
+echo "Gevyra CLI installer"
+echo ""
+
+# Check if Gevyra CLI is already installed
+if command -v "$BINARY_NAME" >/dev/null 2>&1; then
+    echo "Gevyra CLI is already installed."
+    echo "Location: $(command -v "$BINARY_NAME")"
+    echo ""
+
+    echo "Current version:"
+    "$BINARY_NAME" --version 2>/dev/null || echo "Unable to determine current version."
+
+    echo ""
+    echo "Updating Gevyra CLI..."
+    echo ""
+else
+    echo "Gevyra CLI is not installed."
+    echo "Installing Gevyra CLI..."
+    echo ""
+fi
 
 # Check required commands
 for command in curl uname; do
